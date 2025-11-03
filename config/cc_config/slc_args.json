@@ -1,0 +1,6 @@
+{
+  "sdkRoot" : "/Users/kleinlabs/.silabs/slt/installs/conan/p/simpleb526998f4a4d/p/",
+  "apackRoot" : "/Users/kleinlabs/.silabs/slt/installs/conan/p/simpleb526998f4a4d/p/protocol/z-wave/DevTools/cc_configurator",
+  "partOpn" : "efr32zg28b312f1024im48",
+  "boards" : "brd2705arevA02"
+}

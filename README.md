@@ -90,18 +90,24 @@ help             # Show all available commands
 ### Key Components
 
 - **MultilevelSensor_interface_hx711.c** - Z-Wave sensor interface implementation
-  - I2C communication with M5Stack unit
+  - I2C communication with M5Stack unit at address 0x26
   - Weight calculation and calibration
   - Dual scale support (kg/lbs)
-
-- **hx711_driver.c** - Low-level driver (not used with M5Stack I2C version)
-  - Kept for reference/alternative implementations
+  - Reads 32-bit little-endian signed weight data
 
 - **app.c** - Main Z-Wave application
   - Event handling
   - Network management
+  - Z-Wave command class implementation
 
 - **app_btn_handler.c** - Button event processing
+  - BTN0: Send weight + battery reports
+  - BTN1: Inclusion/exclusion mode
+
+- **alternative/hx711_driver.c** - GPIO bit-bang driver for raw HX711
+  - Not used in main build
+  - Alternative implementation for direct HX711 connection
+  - See [alternative/README.md](alternative/README.md) for details
 
 ### Z-Wave Configuration
 
@@ -186,11 +192,26 @@ See [docs/HOMEASSISTANT.md](docs/HOMEASSISTANT.md) for details.
 ```
 barnteq-weight-sensor/
 ├── src/                    # Source files
-├── include/                # Header files
+│   ├── MultilevelSensor_interface_hx711.c  # Main sensor interface (I2C)
+│   ├── app.c                               # Z-Wave application logic
+│   └── app_btn_handler.c                   # Button event handling
+├── include/                # Header files (currently empty, autogen used)
 ├── config/                 # Configuration files
+│   ├── zw_region_config.h                  # Z-Wave region (US/EU)
+│   ├── zw_log_config.h                     # Debug logging settings
+│   └── cc_config/                          # Command class configs
 ├── docs/                   # Documentation
-└── zwave_soc_multilevel_sensor.slcp  # Project file
+│   ├── HARDWARE.md                         # Hardware setup guide
+│   ├── CALIBRATION.md                      # Calibration procedure
+│   └── HOMEASSISTANT.md                    # Home Assistant integration
+├── alternative/            # Alternative raw HX711 implementation
+│   ├── hx711_driver.c                      # GPIO bit-bang driver
+│   ├── hx711_driver.h                      # Driver header
+│   └── README.md                           # Usage guide
+└── zwave_soc_multilevel_sensor.slcp        # Silicon Labs project file
 ```
+
+**Note**: This project uses the **M5Stack Weight I2C Unit** for sensor communication. The `alternative/` folder contains code for direct GPIO communication with a raw HX711 chip, which is not used in the main build but provided as a reference implementation.
 
 ### Serial Debug Output
 
