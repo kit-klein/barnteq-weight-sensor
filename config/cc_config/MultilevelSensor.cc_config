@@ -1,0 +1,34 @@
+zw_cc_multilevel_sensor:
+  endpoints:
+    - endpoint: 0
+      sensors:
+        weight:
+          name: SENSOR_NAME_GENERAL_PURPOSE
+          scales:
+            - SENSOR_SCALE_DEFAULT
+zw_cc_configuration:
+  configurations:
+    - name: "Minimum weight limit"
+      number: 1
+      file_id: 0
+      info: "Minimum weight limit in kilograms"
+      size: CC_CONFIG_PARAMETER_SIZE_32_BIT
+      format: CC_CONFIG_PARAMETER_FORMAT_SIGNED_INTEGER
+      min_value: 0
+      max_value: 200
+      default_value: 0
+      altering_capabilities: 0
+      read_only: 0
+      advanced: 0
+    - name: "Maximum weight limit"
+      number: 2
+      file_id: 1
+      info: "Maximum weight limit in kilograms"
+      size: CC_CONFIG_PARAMETER_SIZE_32_BIT
+      format: CC_CONFIG_PARAMETER_FORMAT_SIGNED_INTEGER
+      min_value: 1
+      max_value: 500
+      default_value: 100
+      altering_capabilities: 0
+      read_only: 0
+      advanced: 0

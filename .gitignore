@@ -1,0 +1,44 @@
+# Build artifacts
+build/
+*.out
+*.hex
+*.bin
+*.s37
+*.map
+*.axf
+*.elf
+
+# Auto-generated files
+autogen/
+
+# IDE files
+.vscode/
+.idea/
+*.code-workspace
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Debug files
+*.log
+
+# Silicon Labs specific
+*.slsproj
+*.slsproj.user
+*.slpb.bak
+artifacts/
+
+# Temporary files
+*.tmp
+*.bak
+*.orig
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+
+# Node
+node_modules/
