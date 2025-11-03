@@ -74,7 +74,7 @@ component:
 - {id: zw_cli_common}
 - {id: zw_core}
 - {id: zw_ota}
-- {id: zw_role_type_always_listening}
+- {id: zw_role_type_sleeping_reporting}
 - {id: zw_true_status}
 - {id: zw_zaf}
 define:
